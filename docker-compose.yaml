@@ -1,12 +1,13 @@
 version: '3.8'
 services:
   mongodb:
-    image: mongo:latest # use the latest image.
+    image: 'mongo:5.0' # use the 5.0 image.
     container_name: mongodb
     restart: unless-stopped
     environment: # set required env variables to access mongo
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: aft-db
     ports:
       - 27017:27017
     volumes: # optional to preserve database after container is deleted.
@@ -14,7 +15,7 @@ services:
   
   # Mongo Express Service
   mongo-express:
-    image: mongo-express:latest # latest image
+    image: 'mongo-express:0.54.0' # 5.0 v image
     container_name: mongo-express
     restart: unless-stopped
     ports:
@@ -22,6 +23,6 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: password
-      ME_CONFIG_MONGODB_SERVER: mongodb 
+      ME_CONFIG_MONGODB_SERVER: aft-db 
       # use the name of the mongo container above for server env var.
       # In our case this is mongodb
