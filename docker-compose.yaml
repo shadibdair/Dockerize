@@ -1,28 +1,60 @@
-version: '3.8'
+# version: '3.8'
+# services:
+#   mongodb:
+#     image: 'mongo:5.0' # use the 5.0 image.
+#     container_name: mongodb
+#     restart: unless-stopped
+#     environment: # set required env variables to access mongo
+#       MONGO_INITDB_ROOT_USERNAME: root
+#       MONGO_INITDB_ROOT_PASSWORD: password
+#       MONGO_INITDB_DATABASE: aft-db
+#     ports:
+#       - 27017:27017
+#     volumes: # optional to preserve database after container is deleted.
+#       - ./database-data:/data/db
+  
+#   # Mongo Express Service
+#   mongo-express:
+#     image: 'mongo-express:0.54.0' # 5.0 v image
+#     container_name: mongo-express
+#     restart: unless-stopped
+#     ports:
+#       - 8081:8081
+#     environment:
+#       ME_CONFIG_MONGODB_ADMINUSERNAME: root
+#       ME_CONFIG_MONGODB_ADMINPASSWORD: password
+#       ME_CONFIG_MONGODB_SERVER: aft-db 
+#       # use the name of the mongo container above for server env var.
+#       # In our case this is mongodb
+
+
+
+
+version: "3.7"
 services:
   mongodb:
-    image: 'mongo:5.0' # use the 5.0 image.
-    container_name: mongodb
-    restart: unless-stopped
-    environment: # set required env variables to access mongo
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: aft-db
-    ports:
-      - 27017:27017
-    volumes: # optional to preserve database after container is deleted.
-      - ./database-data:/data/db
-  
-  # Mongo Express Service
-  mongo-express:
-    image: 'mongo-express:0.54.0' # 5.0 v image
-    container_name: mongo-express
-    restart: unless-stopped
-    ports:
-      - 8081:8081
+    container_name: mongo-dev
+    image: 'mongo:5.0'
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password
-      ME_CONFIG_MONGODB_SERVER: aft-db 
-      # use the name of the mongo container above for server env var.
-      # In our case this is mongodb
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_DATABASE=auth
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    ports:
+      - '27017:27017'
+  mongo-express:
+    container_name: mongo-express
+    image: 'mongo-express:0.54.0'
+    depends_on:
+      - mongodb
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=pass
+      - ME_CONFIG_MONGODB_SERVER=mongo-dev
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=ihavealongpassword
+    ports:
+      - '8081:8081'
+
+# networks:
+#   mongo-compose-network:
+#     driver: bridge
