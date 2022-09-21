@@ -29,7 +29,7 @@
 #### You can see the users that were added from the script :
 - db.getUsers();
 
-PIC
+![Screen Shot 2022-09-21 at 11 47 17](https://user-images.githubusercontent.com/43513994/191459835-b0232eac-97fc-470b-a648-b74753584023.png)
 
 ----
 
