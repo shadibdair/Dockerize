@@ -9,11 +9,12 @@
 #### Run this command to start the container :
 - docker-compose up -d
 
-"PIC"
+![Screen Shot 2022-09-21 at 10 57 43](https://user-images.githubusercontent.com/43513994/191452599-3b28cd10-3238-4467-9adc-4faa5faf2d80.png)
+
 
 ##### Once It completed, You can go to "http://0.0.0.0:8081/"
 
-"PIC""
+<img width="1497" alt="Screen Shot 2022-09-21 at 11 00 23" src="https://user-images.githubusercontent.com/43513994/191456075-fcd2de50-3e43-4de8-ab54-46c3ac84f898.png">
 
 ##### And you can start with mongoDB localy
 
