@@ -11,6 +11,19 @@ db.createUser(
     }
 );
 
+db.createUser(
+    {
+        user: "core",
+        pwd: "password-core",
+        roles: [
+            {
+                role: "readWrite",
+                db: "coreDB"
+            }
+        ]
+    }
+);
+
 
 // If need to create admin user
 // db.createUser(
