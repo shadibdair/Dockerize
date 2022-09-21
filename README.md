@@ -20,6 +20,16 @@
 
 ----
 
+## 🐙 **With CLI :** 
+#### Run this command to start the container :
+- docker-compose exec mongodb bash
+#### To get inside the MongoDB
+- mongo --authenticationDatabase "admin" -u admin -p
+#### You can see the users that were added from the script :
+- db.getUsers();
+
+----
+
 ### 🎏 **The Folder Contains :**
 ```
 - docker-compose.yaml
