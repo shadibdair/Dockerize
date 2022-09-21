@@ -13,7 +13,7 @@
 
 ##### Once It completed, You can go to "http://0.0.0.0:8081/"
 
-"PIC"
+"PIC""
 
 ##### And you can start with mongoDB localy
 
@@ -28,11 +28,12 @@
 ------
 
 ### 🤖 **Inside this folder :**
-> **init.d**
 
-##### **There is a script that running once you start the container :**
-> **mongo-init.js**
+##### **There is a script that running inside the container once you "docker-compose up" :**
+- **init.d**
+    - **mongo-init.js**
 
-*Inside you can create the users that you want to be on the mongoDB as Users, etc..*
+
+💡 *Inside this script you can create the users that you want to be on the mongoDB as default like Users, etc..*
 
 
